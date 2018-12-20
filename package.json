@@ -5,7 +5,8 @@
   "main": "dist/app",
   "scripts": {
     "watch": "tsc --watch",
-    "dev": "nodemon ./dist/app"
+    "dev": "nodemon ./dist/app",
+    "start": "NODE_ENV=production node ./dist/app"
   },
   "keywords": [],
   "author": "",
