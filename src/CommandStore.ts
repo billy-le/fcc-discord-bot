@@ -1,4 +1,7 @@
-class CommandStore {
+import * as fs from 'fs';
+import * as Discord from 'discord.js';
+
+export class CommandStore {
     private static instance: CommandStore;
     private commands: any;
 
@@ -15,7 +18,7 @@ class CommandStore {
     }
 
     private _buildCommandList(): void {
-        this.commands = new Collection();
+        this.commands = new Discord.Collection();
 
         const commandFiles = fs
             .readdirSync(__dirname + "/commands")
@@ -32,5 +35,3 @@ class CommandStore {
         return this.commands;
     }
 }
-
-module.exports = CommandStore;
