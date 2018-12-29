@@ -1,3 +1,5 @@
-module.exports = {
-    prefix: '!',
-};
+// module.exports = {
+//     prefix: '!',
+// };
+
+export const prefix: string = '!';

@@ -6,7 +6,9 @@
   "scripts": {
     "watch": "tsc --watch",
     "dev": "nodemon ./dist/app",
-    "start": "NODE_ENV=production node ./dist/app"
+    "start": "NODE_ENV=production node ./dist/app",
+    "build": "tsc",
+    "postinstall": "npm run build"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +18,7 @@
     "dotenv": "^6.2.0"
   },
   "devDependencies": {
-    "@types/node": "^10.12.15",
+    "@types/node": "^10.12.18",
     "awesome-typescript-loader": "^5.2.1",
     "eslint": "^5.10.0",
     "source-map-loader": "^0.2.4",
