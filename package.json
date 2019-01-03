@@ -5,7 +5,7 @@
   "main": "dist/app",
   "scripts": {
     "watch": "tsc --watch",
-    "dev": "nodemon ./dist/app",
+    "dev": "NODE_ENV=development nodemon ./dist/app",
     "start": "NODE_ENV=production node ./dist/app",
     "build": "tsc",
     "postinstall": "npm run build"
@@ -14,14 +14,26 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-session": "^2.0.0-beta.3",
     "discord.js": "^11.4.2",
-    "dotenv": "^6.2.0"
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jwt-simple": "^0.5.5",
+    "mongoose": "^5.4.1",
+    "passport": "^0.4.0",
+    "passport-github": "^1.1.0"
   },
   "devDependencies": {
+    "@types/bcrypt-nodejs": "0.0.30",
+    "@types/cookie-session": "^2.0.36",
+    "@types/dotenv": "^6.1.0",
+    "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.3.5",
     "@types/node": "^10.12.18",
-    "awesome-typescript-loader": "^5.2.1",
+    "@types/passport": "^1.0.0",
+    "@types/passport-github": "^1.1.3",
     "eslint": "^5.10.0",
-    "source-map-loader": "^0.2.4",
     "typescript": "^3.2.2"
   },
   "types": "dist/app"
