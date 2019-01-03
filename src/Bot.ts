@@ -1,7 +1,8 @@
-import * as Discord from 'discord.js';
-import { CommandStore } from './CommandStore';
-import { prefix } from './config';
+import * as Discord from "discord.js";
+import { CommandStore } from "./CommandStore";
+import { prefix } from "./constant";
 
+const { DISCORD_TOKEN } = process.env;
 export class Bot {
   private client: any;
 
@@ -30,6 +31,6 @@ export class Bot {
       }
     });
 
-    this.client.login(process.env.DISCORD_TOKEN);
+    this.client.login(DISCORD_TOKEN);
   }
 }
