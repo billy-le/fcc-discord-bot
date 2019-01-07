@@ -6,7 +6,6 @@ export class CommandStore {
     private commands: any;
 
     private constructor() {
-        // this._buildCommandList = this._buildCommandList.bind(this);
     }
 
     public static getInstance(): CommandStore {

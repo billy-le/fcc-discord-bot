@@ -1,14 +1,16 @@
 require("dotenv").config({ path: __dirname + "/../.env" });
 
-import { Bot } from "./Bot";
+import Bot from "./Bot";
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cookieSession from "cookie-session";
 import passport from "passport";
 import { homeDocument } from "./views/homePage";
-require("./models/user");
-require("./services/passport");
+import "./models/user";
+import "./services/passport";
+// require("./models/user");
+// require("./services/passport");
 
 const { MONGO_URI, COOKIE_KEY } = process.env;
 
@@ -21,13 +23,18 @@ const MAX_COOKIE_AGE = 30 * 24 * 3600 * 1000; // 30 days -> ms
 
 //******************************************************* */
 // Database configuration
-mongoose
-  .connect(
-    MONGO_URI as string,
-    { useNewUrlParser: true }
-  )
-  .catch(err => console.log(err));
 //******************************************************* */
+try {
+  if (MONGO_URI == undefined) {
+    throw Error("MONGO_URI not provided");
+  }
+  mongoose.connect(
+    MONGO_URI,
+    { useNewUrlParser: true }
+  );
+} catch (err) {
+  console.error("Error:", err);
+}
 
 //******************************************************* */
 // App configuration
@@ -57,9 +64,9 @@ app.get("/error", (req, res) => {
 });
 
 //******************************************************* */
-// Start server
-
+// Start server and bot
+//******************************************************* */
 app.listen(PORT);
 
-// Creating a new Bot instance will also start it up
 const chatBot = new Bot();
+chatBot.run();
