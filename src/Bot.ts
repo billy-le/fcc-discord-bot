@@ -1,6 +1,6 @@
 import Discord, { Message, Client } from "discord.js";
-import { CommandStore } from "./CommandStore";
-import { prefix } from "./constant";
+import { CommandStore } from "./commands/CommandStore";
+import { prefix } from "./constants";
 
 const { DISCORD_TOKEN } = process.env;
 
