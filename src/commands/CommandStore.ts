@@ -20,9 +20,12 @@ export class CommandStore {
         this.commands = new Discord.Collection();
 
         let commandFiles = null;
-        fs.readdir(`${__dirname}/bot_commands/`, (err: any, files: string[]) => {
-            commandFiles = files.filter((file: any) => file.endsWith(".js"));
+        fs.readdir(`${__dirname}/bot_commands/`, (error: any, files: string[]) => {
+            if (error) {
+                throw new Error("Error reading from command directory.");
+            }
 
+            commandFiles = files.filter((file: any) => file.endsWith(".js"));
             try {
                 if (!commandFiles) {
                     throw new Error("Could not read commands");

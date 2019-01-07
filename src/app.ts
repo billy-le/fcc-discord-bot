@@ -6,11 +6,11 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cookieSession from "cookie-session";
 import passport from "passport";
+import expressGraphQL from 'express-graphql';
+import schema from './schema/schema';
 import { homeDocument } from "./views/homePage";
 import "./models/user";
 import "./services/passport";
-// require("./models/user");
-// require("./services/passport");
 
 const { MONGO_URI, COOKIE_KEY } = process.env;
 
@@ -54,6 +54,12 @@ app.use(passport.session());
 
 // Setup routes
 require("./routes/authentication")(app);
+
+// Setup GraphQL
+app.use('/graphql', expressGraphQL({
+  schema,
+  graphiql: true
+}));
 
 // TODO: Move these out into their own files
 app.get("/", (req, res) => {
