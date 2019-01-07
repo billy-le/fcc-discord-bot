@@ -1,5 +1,5 @@
-import * as fs from 'fs';
-import * as Discord from 'discord.js';
+import fs from 'fs';
+import Discord from 'discord.js';
 
 export class CommandStore {
     private static instance: CommandStore;
@@ -20,11 +20,11 @@ export class CommandStore {
         this.commands = new Discord.Collection();
 
         const commandFiles = fs
-            .readdirSync(__dirname + "/commands")
+            .readdirSync(__dirname + "/commands/bot_commands")
             .filter((file: any) => file.endsWith(".js"));
 
         for (const file of commandFiles) {
-            const command = require(`./commands/${file}`);
+            const command = require(`./commands/bot_commands/${file}`);
             this.commands.set(command.name, command);
         }
 

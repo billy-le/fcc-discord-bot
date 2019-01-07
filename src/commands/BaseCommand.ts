@@ -1,7 +1,13 @@
-import {Message} from 'discord.js';
+import { Message } from "discord.js";
 
-abstract class BaseCommand {
-    public execute(message: Message, args: any) {
-        message.channel.send("blah!");
-      }
+export abstract class BaseCommand {
+  protected name: string;
+  protected description: string;
+
+  public constructor(name: string, description: string) {
+    this.name = name;
+    this.description = description;
+  }
+
+  public abstract execute(message: Message, args: string[] | null): void;
 }
