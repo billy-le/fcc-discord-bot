@@ -7,10 +7,11 @@ import mongoose from "mongoose";
 import cookieSession from "cookie-session";
 import passport from "passport";
 import expressGraphQL from 'express-graphql';
-import schema from './schema/schema';
 import { homeDocument } from "./views/homePage";
 import "./models/user";
+import "./models/command";
 import "./services/passport";
+import schema from './schema/schema';
 
 const { MONGO_URI, COOKIE_KEY } = process.env;
 
