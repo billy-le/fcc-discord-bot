@@ -7,21 +7,6 @@ import graphql, {
 } from 'graphql';
 import mongoose from 'mongoose';
 
-// const dummyData = [
-//     {
-//         id: 1,
-//         name: "test",
-//         description: "testing",
-//         responses: "TEST"
-//     },
-//     {
-//         id: 2,
-//         name: "quote",
-//         description: "quotes",
-//         responses: "QUOTE"
-//     }
-// ];
-
 const Command = mongoose.model('commands');
 
 // TODO: Refactor "responses" to be an array/list type
@@ -42,7 +27,6 @@ const RootQuery = new GraphQLObjectType({
             type: CommandType,
             args: { name: { type: GraphQLString } },
             async resolve(parentValue, args) {
-                // return dummyData.filter((command) => command.name === args.name)[0];
                 let commToFind = null;
                 try {
                     commToFind = await Command.findOne({
@@ -52,11 +36,14 @@ const RootQuery = new GraphQLObjectType({
                     console.log("Command Query Error:", err);
                 }
                 return commToFind;
-            }
-        }
-    }
+            } // end resolve()
+        } // end command
+    } // end fields
 });
 
+// TODO: Implement deleteCommand
+// TODO: Implement editCommand
+// TODO: Implement addResponseToCommand
 const mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
@@ -84,7 +71,7 @@ const mutation = new GraphQLObjectType({
                 }
             } // end resolve()
         } // end addCommand
-    }
+    } // end fields
 });
 
 export default new GraphQLSchema({

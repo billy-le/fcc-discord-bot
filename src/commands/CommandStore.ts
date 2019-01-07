@@ -1,6 +1,8 @@
 import fs from 'fs';
 import Discord from 'discord.js';
 
+// TODO: Also allow commands to be created from the database
+
 export class CommandStore {
     private static instance: CommandStore;
     private commands: any;
