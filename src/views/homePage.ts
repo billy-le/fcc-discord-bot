@@ -5,7 +5,7 @@ export const homeDocument = () => (`
     </head>
     <body>
         <h2>Please login.</h2>
-        <button onclick="location.href='/auth/github'">Signin with Github</button>
+        <button onclick="location.href='/auth/github/token'">Signin with Github</button>
     </body>
     </html>    
 `);

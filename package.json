@@ -21,10 +21,13 @@
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
+    "jsonwebtoken": "^8.4.0",
     "jwt-simple": "^0.5.5",
     "mongoose": "^5.4.1",
     "passport": "^0.4.0",
-    "passport-github": "^1.1.0"
+    "passport-github": "^1.1.0",
+    "passport-github-token": "^2.1.0",
+    "passport-jwt": "^4.0.0"
   },
   "devDependencies": {
     "@types/bcrypt-nodejs": "0.0.30",
